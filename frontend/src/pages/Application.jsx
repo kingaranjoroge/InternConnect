@@ -33,6 +33,18 @@ const Application = () => {
     try {
       await axios.post('http://localhost:3000/applications', formData);
       console.log('Form data sent to the server:', formData);
+
+      //clear form data after submission
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        course: "",
+        university: "",
+        message: "",
+        attachmentEmail: "",
+        attachmentTitle: ""
+      })
     } catch (error) {
       console.error('Error sending form data to the server:', error);
     }
