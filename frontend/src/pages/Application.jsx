@@ -6,21 +6,55 @@ import axios from 'axios';
 const Application = () => {
   const location = useLocation();
   const selectedAttachment = location.state?.selectedAttachment || null;
-  const [selectedFiles, setSelectedFiles] = useState([]);
+  // const [selectedFiles, setSelectedFiles] = useState([]);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
     course: '',
     university: '',
+    message: '',
+    attachmentEmail: selectedAttachment ? selectedAttachment.email : '',
+    attachmentTitle: selectedAttachment ? selectedAttachment.title : '',
   });
 
-  const handleFileChange = (event) => {
-    setSelectedFiles(Array.from(event.target.files));
-  };
+  // const handleFileChange = (event) => {
+  //   setSelectedFiles(Array.from(event.target.files));
+  // };
 
   const handleInputChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    // Send form data to the backend
+    try {
+      await axios.post('http://localhost:3000/applications', formData);
+      console.log('Form data sent to the server:', formData);
+    } catch (error) {
+      console.error('Error sending form data to the server:', error);
+    }
+
+    // Send email
+    try {
+      await axios.post('http://localhost:3000/send-email', {
+        from: formData.email,
+        to: formData.attachmentEmail,
+        subject: formData.attachmentTitle,
+        text: `
+          Name: ${formData.name}, 
+          Email: ${formData.email}, 
+          Phone: ${formData.phone}, 
+          Course: ${formData.course}, 
+          University: ${formData.university}, 
+          Message: ${formData.message}`
+      });
+      console.log('Email sent successfully');
+    } catch (error) {
+      console.error('Error sending email:', error);
+    }
   };
 
   return (
@@ -28,7 +62,7 @@ const Application = () => {
       <Navbar />
       <section className="flex items-center justify-center h-[87.5vh] overflow-auto">
         <div className="flex items-center justify-center w-3/4 h-5/6 bg-blue-100 shadow-2xl rounded overflow-auto">
-          <form className="flex flex-col w-1/2 h-full">
+          <form className="flex flex-col w-1/2 h-full" onSubmit={handleSubmit}>
             <div className="flex flex-col gap-2 p-3 pt-4">
               <input
                 type="text"
@@ -70,11 +104,18 @@ const Application = () => {
                 value={formData.university}
                 onChange={handleInputChange}
               />
-              <input
+              <textarea
+                className="input input-bordered shadow-lg"
+                placeholder="Your message"
+                name="message"
+                value={formData.message}
+                onChange={handleInputChange}
+              />
+              {/* <input
                 type="file"
                 multiple
                 onChange={handleFileChange}
-              />
+              /> */}
             </div>
             <div className='px-3 pb-4'>
               <button type="submit" className="btn w-1/4 bg-blue-800 text-slate-200 hover:bg-blue-950">Apply</button>
