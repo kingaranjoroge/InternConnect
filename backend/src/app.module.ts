@@ -6,6 +6,8 @@ import { AttachmentsModule } from './attachments/attachments.module';
 import { OrganizationsModule } from './organizations/organizations.module';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose'; 
+import { ApplicationsModule } from './applications/applications.module';
+import { EmailModule } from './email/email.module';
 
 @Module({
   imports: [
@@ -17,6 +19,8 @@ import { MongooseModule } from '@nestjs/mongoose';
       isGlobal: true,
     }),
     MongooseModule.forRoot(process.env.MONGODB_URI),
+    ApplicationsModule,
+    EmailModule,
   ],
   controllers: [AppController],
   providers: [AppService],
