@@ -32,7 +32,7 @@ const AllAttachments = () => {
             <th className="pr-4">Phone</th>
             <th className="pr-4">Location</th>
             <th className="pr-4">Category</th>
-            <th className="pr-4">Description</th>
+            {/* <th className="pr-4">Description</th> */}
             <th className='pr-4'>Renumeration</th>
           </tr>
         </thead>
@@ -46,7 +46,7 @@ const AllAttachments = () => {
               <td className="pr-4 pb-2">{attachment.phone}</td>
               <td className="pr-4 pb-2">{attachment.location}</td>
               <td className="pr-4 pb-2">{attachment.category}</td>
-              <td className="pr-4 pb-2">{attachment.description}</td>
+              {/* <td className="pr-4 pb-2">{attachment.description}</td> */}
               <td className="pr-4 pb-2">{attachment.renumeration}</td>
             </tr>
           ))}
