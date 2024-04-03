@@ -4,14 +4,16 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { User } from 'src/schemas/User.schema';
 import { Model } from 'mongoose';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UsersService {
 
   constructor(@InjectModel(User.name) private userModel: Model<User>) { }
 
-  create(createUserDto: CreateUserDto) {
-    const newUser = new this.userModel(createUserDto);
+  async create(createUserDto: CreateUserDto) {
+    const hashedPassword = await bcrypt.hash(createUserDto.password, 10);
+    const newUser = new this.userModel({ ...createUserDto, password: hashedPassword });
     return newUser.save();
   }
 
@@ -29,5 +31,14 @@ export class UsersService {
 
   remove(id: string) {
     return this.userModel.findByIdAndDelete(id);
+  }
+// login functionality
+  async validateUser(email: string, password: string): Promise<any> {
+    const user = await this.userModel.findOne({ email });
+    if (user && await bcrypt.compare(password, user.password)) {
+      const { password, ...result } = user.toObject();
+      return result;
+    }
+    return null;
   }
 }

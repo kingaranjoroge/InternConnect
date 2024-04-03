@@ -15,6 +15,14 @@ export class UsersController {
     return this.usersService.create(createUserDto);
   }
 
+  //login functionality
+  @Post('validate')
+  async validate(@Body() loginUserDto: { email: string, password: string }) {
+    const user = await this.usersService.validateUser(loginUserDto.email, loginUserDto.password);
+    if (!user) throw new HttpException('Invalid email or password', 400);
+    return user;
+  }
+
   @Get()
   findAll() {
     return this.usersService.findAll();
