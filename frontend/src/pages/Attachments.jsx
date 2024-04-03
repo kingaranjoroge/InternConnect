@@ -42,8 +42,13 @@ const Attachments = () => {
   };
 
   const handleNavigate = (attachment) => {
+    const user = JSON.parse(localStorage.getItem('user'));
     setSelectedAttachment(attachment);
-    navigate('/application', { state: { selectedAttachment: attachment } });
+    if (user) {
+      navigate('/application', { state: { selectedAttachment: attachment } });
+    } else {
+      navigate('/sign-in');
+    }
   };
 
   const handleDetails = (attachment) => {
