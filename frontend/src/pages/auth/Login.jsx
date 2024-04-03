@@ -1,13 +1,23 @@
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 
 const Login = () => {
   const navigate = useNavigate();
 
-  const handleLogin = () => {
-    // Perform login logic here
+  const handleLogin = async (event) => {
+    event.preventDefault();
+    const email = event.target[0].value;
+    const password = event.target[1].value;
 
-    // Redirect to the "admin" page
-    navigate("/admin");
+    const response = await axios.post('http://localhost:3000/users/validate', { email, password });
+    if (response.data) {
+      // User is valid, redirect to the "attachments" page
+      localStorage.setItem('user', JSON.stringify(response.data));
+      navigate("/attachments");
+    } else {
+      // User is not valid, show an error message
+      alert('Invalid email or password');
+    }
   };
 
   return (
@@ -21,12 +31,15 @@ const Login = () => {
             type="email"
             placeholder="email"
             className="input input-bordered"
+            required
           />
           <input
             type="password"
             placeholder="password"
             className="input input-bordered"
+            required
           />
+          <p className="place-self-center">Don't have an account? <a className="text-blue-800" href="/sign-up">Register</a></p>
         </div>
         <div className="flex items-center justify-center">
           <button type="submit" className="btn bg-blue-800 w-1/2 text-slate-200 hover:bg-blue-950">
