@@ -9,6 +9,7 @@ const Navbar = ({ onSectionChange }) => {
         <i className="font-bold text-xl text-slate-100">Admin</i>
       </div>
       <div className="flex flex-row justify-evenly gap-6 text-slate-100">
+        <a className="hover:font-bold hover:text-white cursor-pointer" href="/">Home</a>
         <a
           className="hover:font-bold hover:text-white cursor-pointer"
           onClick={() => handleClick("Users")}
