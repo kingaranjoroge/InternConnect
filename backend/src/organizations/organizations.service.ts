@@ -4,14 +4,16 @@ import { UpdateOrganizationDto } from './dto/update-organization.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Organization } from 'src/schemas/Organization.shema';
 import { Model } from 'mongoose'; 
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class OrganizationsService {
 
   constructor(@InjectModel(Organization.name) private organizationModel: Model<Organization>) { }
 
-  create(createOrganizationDto: CreateOrganizationDto) {
-    const newOrganization = new this.organizationModel(createOrganizationDto);
+  async create(createOrganizationDto: CreateOrganizationDto) {
+    const hashedPassword = await bcrypt.hash(createOrganizationDto.password, 10);
+    const newOrganization = new this.organizationModel({ ...createOrganizationDto, password: hashedPassword });
     return newOrganization.save();
   }
 
@@ -29,5 +31,14 @@ export class OrganizationsService {
 
   remove(id: string) {
     return this.organizationModel.findByIdAndDelete(id);
+  }
+
+  async validateOrg(email: string, password: string): Promise<any> {
+    const org = await this.organizationModel.findOne({ email });
+    if (org && await bcrypt.compare(password, org.password)) {
+      const { password, ...result } = org.toObject();
+      return result;
+    }
+    return null;
   }
 }

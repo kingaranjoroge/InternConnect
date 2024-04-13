@@ -14,6 +14,15 @@ export class OrganizationsController {
     return this.organizationsService.create(createOrganizationDto);
   }
 
+  //login functionality
+  @Post('validate')
+  async validate(@Body() loginOrgDto: { email: string, password: string }) {
+    const org = await this.organizationsService.validateOrg(loginOrgDto.email, loginOrgDto.password);
+    if (!org) throw new HttpException('Invalid email or password', 400);
+    return org;
+  }
+
+
   @Get()
   findAll() {
     return this.organizationsService.findAll();
