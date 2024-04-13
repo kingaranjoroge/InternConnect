@@ -28,6 +28,11 @@ export class Organization {
     required: true,
   })
   role: string;
+
+  @Prop({
+    required: true
+  })
+  password: string;
 }
 
 export const OrganizationSchema = SchemaFactory.createForClass(Organization);

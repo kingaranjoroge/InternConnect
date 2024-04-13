@@ -20,4 +20,8 @@ export class CreateOrganizationDto {
     @IsNotEmpty()
     @IsString()
     role: string;
+
+    @IsNotEmpty()
+    @IsString()
+    password: string;
 }
