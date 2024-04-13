@@ -9,9 +9,11 @@ import Home from './pages/Home'
 import Application from './pages/Application'
 import Logout from './pages/auth/Logout'
 import OrgAdmin from './pages/OrgAdmin'
+import OrgLogin from './pages/auth/OrgLogin'
 
 const App = () => {
   const user = JSON.parse(localStorage.getItem('user'));
+  const org = JSON.parse(localStorage.getItem('org'));
 
   return (
     <Routes>
@@ -24,7 +26,8 @@ const App = () => {
       <Route path='attachments' element={<Attachments />} />
       <Route path="application" element={<Application />} />
       <Route path="sign-out" element={<Logout />} />
-      <Route path="org-admin" element={<OrgAdmin />}/>
+      <Route path='org-admin' element={user && user.role === 'admin' || org && org.role === 'org' ? <OrgAdmin /> : <Navigate to="/" />} />
+      <Route path="org-signin" element={<OrgLogin />}/>
     </Routes>
   )
 }
