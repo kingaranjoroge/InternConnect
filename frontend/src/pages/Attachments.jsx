@@ -43,9 +43,12 @@ const Attachments = () => {
 
   const handleNavigate = (attachment) => {
     const user = JSON.parse(localStorage.getItem('user'));
+    const org = JSON.parse(localStorage.getItem('org'));
     setSelectedAttachment(attachment);
     if (user) {
       navigate('/application', { state: { selectedAttachment: attachment } });
+    } else if (org){
+      alert("You can't apply as an organization")
     } else {
       navigate('/sign-in');
     }
