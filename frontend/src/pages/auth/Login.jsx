@@ -6,16 +6,21 @@ const Login = () => {
 
   const handleLogin = async (event) => {
     event.preventDefault();
+  
+    // Check if 'user' or 'org' already exists in localStorage
+    if (localStorage.getItem('user') || localStorage.getItem('org')) {
+      alert('Already logged in. Please log out first.');
+      return;
+    }
+  
     const email = event.target[0].value;
     const password = event.target[1].value;
-
+  
     const response = await axios.post('http://localhost:3000/users/validate', { email, password });
     if (response.data) {
-      // User is valid, redirect to the "attachments" page
       localStorage.setItem('user', JSON.stringify(response.data));
       navigate("/attachments");
     } else {
-      // User is not valid, show an error message
       alert('Invalid email or password');
     }
   };
