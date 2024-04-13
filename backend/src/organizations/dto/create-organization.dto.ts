@@ -16,4 +16,8 @@ export class CreateOrganizationDto {
     @IsNotEmpty()
     @IsMobilePhone()
     phone: string;
+
+    @IsNotEmpty()
+    @IsString()
+    role: string;
 }

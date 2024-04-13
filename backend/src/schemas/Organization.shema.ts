@@ -23,6 +23,11 @@ export class Organization {
     unique: true
   })
   phone: string;
+
+  @Prop({
+    required: true,
+  })
+  role: string;
 }
 
 export const OrganizationSchema = SchemaFactory.createForClass(Organization);
