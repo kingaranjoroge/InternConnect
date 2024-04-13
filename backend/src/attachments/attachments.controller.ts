@@ -28,6 +28,10 @@ export class AttachmentsController {
     return findAttachment;
   }
 
+  @Get('organization/:name')
+async findAllByOrganization(@Param('name') name: string) {
+  return this.attachmentsService.findAllByOrganization(name);
+}
   @Patch(':id')
   // @UsePipes(new ValidationPipe())
   async update(@Param('id') id: string, @Body() updateAttachmentDto: UpdateAttachmentDto) {

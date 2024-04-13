@@ -23,6 +23,9 @@ export class AttachmentsService {
     return this.attachmentModel.findById(id);
   }
 
+  findAllByOrganization(organization: string) {
+  return this.attachmentModel.find({ organization });
+}
   update(id: string, updateAttachmentDto: UpdateAttachmentDto) {
     return this.attachmentModel.findByIdAndUpdate(id, updateAttachmentDto, { new: true });
   }
