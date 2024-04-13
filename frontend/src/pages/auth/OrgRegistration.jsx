@@ -10,6 +10,7 @@ const OrgRegistration = () => {
         email: '',
         phone: '',
         location: '',
+        password: '',
         role: 'org'
       });
     
@@ -25,7 +26,7 @@ const OrgRegistration = () => {
           alert("Organization created successfully!");
     
           // clear form data after successful submission
-          setFormData({ name: "", email: "", phone: "", location: "" });
+          setFormData({ name: "", email: "", phone: "", location: "", password: "",});
 
           navigate('/org-admin');
         } catch (err) {
@@ -71,6 +72,14 @@ const OrgRegistration = () => {
                     className="input input-bordered"
                     name="location"
                     value={formData.location}
+                    onChange={handleChange}
+                />
+                <input 
+                    type="text" 
+                    placeholder="password"
+                    className="input input-bordered"
+                    name="password"
+                    value={formData.password}
                     onChange={handleChange}
                 />
             </div>
