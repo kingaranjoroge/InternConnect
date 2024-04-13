@@ -7,6 +7,7 @@ const CreateOrganization = () => {
     email: '',
     phone: '',
     location: '',
+    role: 'org'
   });
 
   const handleChange = (e) => {
