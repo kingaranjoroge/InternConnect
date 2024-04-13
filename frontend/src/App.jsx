@@ -8,6 +8,7 @@ import Attachments from './pages/Attachments'
 import Home from './pages/Home'
 import Application from './pages/Application'
 import Logout from './pages/auth/Logout'
+import OrgAdmin from './pages/OrgAdmin'
 
 const App = () => {
   const user = JSON.parse(localStorage.getItem('user'));
@@ -23,6 +24,7 @@ const App = () => {
       <Route path='attachments' element={<Attachments />} />
       <Route path="application" element={<Application />} />
       <Route path="sign-out" element={<Logout />} />
+      <Route path="org-admin" element={<OrgAdmin />}/>
     </Routes>
   )
 }
