@@ -40,6 +40,7 @@ const Login = () => {
             required
           />
           <p className="place-self-center">Don't have an account? <a className="text-blue-800" href="/sign-up">Register</a></p>
+          <p className="place-self-center"><a className="text-blue-800" href="/org-signin">Click here to login as an organization</a></p>
         </div>
         <div className="flex items-center justify-center">
           <button type="submit" className="btn bg-blue-800 w-1/2 text-slate-200 hover:bg-blue-950">
