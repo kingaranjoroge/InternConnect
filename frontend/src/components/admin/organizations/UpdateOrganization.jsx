@@ -8,6 +8,7 @@ const UpdateOrganization = () => {
     email: '',
     phone: '',
     location: '',
+    password: ''
   });
 
   const handleChange = (e) => {
@@ -26,7 +27,7 @@ const UpdateOrganization = () => {
 
       // clear organization id and form data after successful update
       setOrganizationId('');
-      setFormData({ name:'', email:'', phone:'', location:'' });
+      setFormData({ name:'', email:'', phone:'', location:'', password:'' });
     } catch(err){
       alert("Organization not updated successfully!");
       console.log(err.message);
@@ -75,6 +76,14 @@ const UpdateOrganization = () => {
             className="input input-bordered"
             name="location"
             value={formData.location}
+            onChange={handleChange}
+          />
+          <input 
+            type="text" 
+            placeholder="password"
+            className="input input-bordered"
+            name="password"
+            value={formData.password}
             onChange={handleChange}
           />
         </div>
