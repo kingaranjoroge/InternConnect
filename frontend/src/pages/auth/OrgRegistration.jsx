@@ -10,6 +10,7 @@ const OrgRegistration = () => {
         email: '',
         phone: '',
         location: '',
+        role: 'org'
       });
     
       const handleChange = (e) => {
@@ -26,7 +27,7 @@ const OrgRegistration = () => {
           // clear form data after successful submission
           setFormData({ name: "", email: "", phone: "", location: "" });
 
-          navigate('/sign-in');
+          navigate('/org-admin');
         } catch (err) {
           console.log(err.message);
           alert("Organization not created successfully!");
