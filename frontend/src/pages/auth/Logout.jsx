@@ -5,8 +5,12 @@ const Logout = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Clear any user data from state or local storage
-    localStorage.removeItem('user');
+    // Check for 'user' and 'org' in localStorage and remove whichever one exists
+    if (localStorage.getItem('user')) {
+      localStorage.removeItem('user');
+    } else if (localStorage.getItem('org')) {
+      localStorage.removeItem('org');
+    }
 
     // Redirect to the login page
     navigate('/sign-in');
