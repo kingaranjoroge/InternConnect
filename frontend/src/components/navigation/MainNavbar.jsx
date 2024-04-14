@@ -11,9 +11,9 @@ const MainNavbar = () => {
             {user && user.role === 'admin' && (
               <p className="font-bold text-slate-200 text-base hover:text-slate-300"><a href="/admin">Admin</a></p>
             )}
-            {org && org.role === 'org' && (
+            {(user && user.role === 'admin') || (org && org.role === 'org') ? (
               <p className="font-bold text-slate-200 text-base hover:text-slate-300"><a href="/org-admin">OrgAdmin</a></p>
-            )}
+            ) : null}
             <p className="font-bold text-slate-200 text-base hover:text-slate-300"><a href="/attachments">Attachments</a></p>
             {user || org ? (
               <p className="font-bold text-slate-200 text-base hover:text-slate-300"><a href="/sign-out">Sign-out</a></p>
