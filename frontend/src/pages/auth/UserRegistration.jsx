@@ -25,24 +25,28 @@ const UserRegistration = () => {
         e.preventDefault()
 
         try {
-            const res = await axios.post('http://localhost:3000/users', formData)
-            console.log(res.data)
-            alert('User created successfully')
+            if (formData.role === 'admin') {
+                alert("Please enter a valid role (e.g attachee/intern)")
+            } else {
+                const res = await axios.post('http://localhost:3000/users', formData)
+                console.log(res.data)
+                alert('User created successfully')
 
-            // clear form data
-            setFormData({
-                name: '',
-                username: '',
-                email: '',
-                phone: '',
-                password: '',
-                role: '',
-                university: '',
-                course: '',
-                regNumber: ''
-            })
+                // clear form data
+                setFormData({
+                    name: '',
+                    username: '',
+                    email: '',
+                    phone: '',
+                    password: '',
+                    role: '',
+                    university: '',
+                    course: '',
+                    regNumber: ''
+                })
 
-            navigate('/sign-in')
+                navigate('/sign-in')
+            }            
         }
         catch (err) {
             console.error('Error creating user:', err)
