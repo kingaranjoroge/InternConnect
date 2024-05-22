@@ -12,7 +12,7 @@ const DeleteUser = () => {
     e.preventDefault()
 
     try{
-      await axios.delete(`http://localhost:3000/users/${userId}`)
+      await axios.delete(`https://internconnect-yg04.onrender.com/users/${userId}`)
       alert("User deleted successfully");
 
       // clear form data

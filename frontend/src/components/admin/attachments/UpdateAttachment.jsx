@@ -25,7 +25,7 @@ const UpdateAttachment = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try{
-            const response = await axios.patch(`http://localhost:3000/attachments/${attachmentId}`, formData);
+            const response = await axios.patch(`https://internconnect-yg04.onrender.com/attachments/${attachmentId}`, formData);
             console.log(response.data);
             alert("Attachment updated successfully!");
 

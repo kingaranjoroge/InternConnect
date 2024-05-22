@@ -22,7 +22,7 @@ const UpdateOrganization = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try{
-      await axios.patch(`http://localhost:3000/organizations/${organizationId}`, formData);
+      await axios.patch(`https://internconnect-yg04.onrender.com/organizations/${organizationId}`, formData);
       alert("Organization updated successfully!");
 
       // clear organization id and form data after successful update

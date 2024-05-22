@@ -28,7 +28,7 @@ const UserRegistration = () => {
             if (formData.role === 'admin') {
                 alert("Please enter a valid role (e.g attachee/intern)")
             } else {
-                const res = await axios.post('http://localhost:3000/users', formData)
+                const res = await axios.post('https://internconnect-yg04.onrender.com/users', formData)
                 console.log(res.data)
                 alert('User created successfully')
 

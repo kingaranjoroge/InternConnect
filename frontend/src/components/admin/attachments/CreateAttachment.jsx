@@ -20,7 +20,7 @@ const CreateAttachment = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try{
-            const response = await axios.post('http://localhost:3000/attachments', formData);
+            const response = await axios.post('https://internconnect-yg04.onrender.com/attachments', formData);
             console.log(response.data);
             alert("Attachment created successfully!");
 

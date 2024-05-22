@@ -11,7 +11,7 @@ const DeleteAttachment = () => {
   const handleDelete = async (e) => {
     e.preventDefault()
     try {
-      await axios.delete(`http://localhost:3000/attachments/${attachmentId}`)
+      await axios.delete(`https://internconnect-yg04.onrender.com/attachments/${attachmentId}`)
       alert("Attachment has been deleted successfully.")
 
       // clear attachment id

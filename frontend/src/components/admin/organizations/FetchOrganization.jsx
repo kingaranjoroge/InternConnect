@@ -19,7 +19,7 @@ const FetchOrganization = () => {
     e.preventDefault()
 
     try{
-      const res = await axios.get(`http://localhost:3000/organizations/${organizationId}`)
+      const res = await axios.get(`https://internconnect-yg04.onrender.com/organizations/${organizationId}`)
       console.log(res.data);
       alert("Organization fetched successfully");
 

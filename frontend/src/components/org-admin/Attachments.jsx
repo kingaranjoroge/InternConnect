@@ -7,7 +7,7 @@ const Attachments = () => {
 
 const fetchAttachments = async () => {
     try {
-        const response = await axios.get(`http://localhost:3000/attachments/organization/${organization}`); 
+        const response = await axios.get(`https://internconnect-yg04.onrender.com/attachments/organization/${organization}`); 
         setAttachments(response.data);
     } catch (error) {
         console.error('Error fetching attachments:', error);

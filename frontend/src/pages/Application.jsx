@@ -31,7 +31,7 @@ const Application = () => {
 
     // Send form data to the backend
     try {
-      await axios.post('http://localhost:3000/applications', formData);
+      await axios.post('https://internconnect-yg04.onrender.com/applications', formData);
       console.log('Form data sent to the server:', formData);
 
       //clear form data after submission
@@ -51,7 +51,7 @@ const Application = () => {
 
     // Send email
     try {
-      await axios.post('http://localhost:3000/send-email', {
+      await axios.post('https://internconnect-yg04.onrender.com/send-email', {
         from: formData.email,
         to: formData.attachmentEmail,
         subject: formData.attachmentTitle,

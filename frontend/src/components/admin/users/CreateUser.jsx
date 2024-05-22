@@ -25,7 +25,7 @@ const CreateUser = () => {
         e.preventDefault();
     
         try {
-          const response = await axios.post('http://localhost:3000/users', formData);
+          const response = await axios.post('https://internconnect-yg04.onrender.com/users', formData);
           console.log(response.data);
           alert('User created successfully');
 

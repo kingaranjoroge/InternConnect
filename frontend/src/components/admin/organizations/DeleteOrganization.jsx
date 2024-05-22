@@ -12,7 +12,7 @@ const DeleteOrganization = () => {
     e.preventDefault()
 
     try{
-      await axios.delete(`http://localhost:3000/organizations/${organizationId}`)
+      await axios.delete(`https://internconnect-yg04.onrender.com/organizations/${organizationId}`)
       alert("Organization deleted successfully");
 
       // clear organization id

@@ -19,7 +19,7 @@ const FetchAttachment = () => {
     e.preventDefault()
 
     try{
-      const res = await axios.get(`http://localhost:3000/attachments/${attachmentId}`)
+      const res = await axios.get(`https://internconnect-yg04.onrender.com/attachments/${attachmentId}`)
       console.log(res.data);
       alert("Attachment fetched successfully");
 

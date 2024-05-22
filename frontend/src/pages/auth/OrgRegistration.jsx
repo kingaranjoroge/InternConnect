@@ -21,7 +21,7 @@ const OrgRegistration = () => {
       const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-          const res = await axios.post('http://localhost:3000/organizations', formData);
+          const res = await axios.post('https://internconnect-yg04.onrender.com/organizations', formData);
           console.log(res.data);
           alert("Organization created successfully!");
     
