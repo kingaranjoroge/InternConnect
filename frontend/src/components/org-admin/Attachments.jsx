@@ -25,7 +25,7 @@ const fetchAttachments = async () => {
           className="input input-bordered"
           value={organization} 
           onChange={e => setOrganization(e.target.value)} 
-          placeholder="Enter organization name"
+          placeholder="use (organization2))"
         />
         <button className="btn bg-blue-800 w-1/4 text-slate-200 hover:bg-blue-950" onClick={fetchAttachments}>Fetch Attachments</button>
       </div>
