@@ -19,7 +19,7 @@ const Login = () => {
     const response = await axios.post('https://internconnect-yg04.onrender.com/users/validate', { email, password });
     if (response.data) {
       localStorage.setItem('user', JSON.stringify(response.data));
-      navigate("/attachments");
+      navigate("/");
     } else {
       alert('Invalid email or password');
     }
@@ -34,13 +34,13 @@ const Login = () => {
         <div className="flex flex-col gap-4">
           <input
             type="email"
-            placeholder="email"
+            placeholder="email14@gmail.com"
             className="input input-bordered"
             required
           />
           <input
             type="password"
-            placeholder="password"
+            placeholder="014"
             className="input input-bordered"
             required
           />
