@@ -29,6 +29,9 @@ const Home = () => {
                 <button className="btn bg-blue-800 text-slate-200 px-16 hover:bg-blue-950" onClick={handleRegisterNavigate}>Register</button>
                 <button className="btn border-blue-800 text-blue-800 bg-slate-200 px-16 hover:bg-blue-800 hover:text-slate-200" onClick={handleAttachmentsNavigate}>View attachments</button>
             </div>
+            <div className="flex flex-col items-center justify-center">
+                <p className="text-base font-semibold text-gray-400">(to view admin functionality, sign in with the provided credentials)</p>
+            </div>
         </section>
     </main>
   )
