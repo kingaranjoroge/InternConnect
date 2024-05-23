@@ -64,8 +64,10 @@ const Application = () => {
           Message: ${formData.message}`
       });
       console.log('Email sent successfully');
+      alert('Email sent successfully')
     } catch (error) {
       console.error('Error sending email:', error);
+      alert('Email not sent, please try again')
     }
   };
 
