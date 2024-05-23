@@ -13,7 +13,7 @@ const Logout = () => {
     }
 
     // Redirect to the login page
-    navigate('/sign-in');
+    navigate('/');
   }, [navigate]);
 
   return (
