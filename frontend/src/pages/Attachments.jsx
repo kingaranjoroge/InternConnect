@@ -88,6 +88,8 @@ const Attachments = () => {
           <div className='flex flex-col items-center justify-center h-[75vh]'>
             <p className='text-xl font-bold'>No attachments found</p>
             <p>Try searching with different keywords</p>
+            <br />
+            <p className="text-base font-semibold text-gray-400">(might take a moment to fetch items from server...)</p>
           </div>
         ) : (
           filteredAttachments.map((attachment) => (
