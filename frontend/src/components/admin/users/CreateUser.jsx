@@ -1,5 +1,6 @@
 import { useState } from "react"
 import axios from 'axios'
+import config from '../../../../config';
 
 const CreateUser = () => {
     const [formData, setFormData] = useState({
@@ -25,7 +26,7 @@ const CreateUser = () => {
         e.preventDefault();
     
         try {
-          const response = await axios.post('https://internconnect-yg04.onrender.com/users', formData);
+          const response = await axios.post(`${config.serverUrl}/users`, formData);
           console.log(response.data);
           alert('User created successfully');
 

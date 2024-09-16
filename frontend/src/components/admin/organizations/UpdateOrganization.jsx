@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import axios from 'axios'
+import config from '../../../../config';
 
 const UpdateOrganization = () => {
   const [organizationId, setOrganizationId] = useState('');
@@ -22,7 +23,7 @@ const UpdateOrganization = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try{
-      await axios.patch(`https://internconnect-yg04.onrender.com/organizations/${organizationId}`, formData);
+      await axios.patch(`${config.serverUrl}/organizations/${organizationId}`, formData);
       alert("Organization updated successfully!");
 
       // clear organization id and form data after successful update

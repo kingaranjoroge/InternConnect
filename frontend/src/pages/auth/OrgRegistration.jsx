@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import config from "../../../config";
 
 const OrgRegistration = () => {
     const navigate = useNavigate();
@@ -21,7 +22,7 @@ const OrgRegistration = () => {
       const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-          const res = await axios.post('https://internconnect-yg04.onrender.com/organizations', formData);
+          const res = await axios.post(`${config.serverUrl}/organizations`, formData);
           console.log(res.data);
           alert("Organization created successfully!");
     

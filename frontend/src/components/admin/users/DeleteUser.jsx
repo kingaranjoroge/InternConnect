@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios'
+import config from '../../../../config';
 
 const DeleteUser = () => {
   const [userId, setUserId] = useState('')
@@ -12,7 +13,7 @@ const DeleteUser = () => {
     e.preventDefault()
 
     try{
-      await axios.delete(`https://internconnect-yg04.onrender.com/users/${userId}`)
+      await axios.delete(`${config.serverUrl}/users/${userId}`)
       alert("User deleted successfully");
 
       // clear form data

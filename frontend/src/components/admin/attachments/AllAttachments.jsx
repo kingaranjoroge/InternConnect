@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import config from '../../../../config';
 
 const AllAttachments = () => {
   const [attachments, setAttachments] = useState([]);
@@ -7,7 +8,7 @@ const AllAttachments = () => {
   useEffect(() => {
     const fetchAttachments = async () => {
       try {
-        const response = await axios.get('https://internconnect-yg04.onrender.com/attachments'); 
+        const response = await axios.get(`${config.serverUrl}/attachments`); 
         setAttachments(response.data);
       } catch (error) {
         console.error('Error fetching attachments:', error);

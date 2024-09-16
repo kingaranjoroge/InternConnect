@@ -3,6 +3,7 @@ import axios from 'axios'
 import Modal from 'react-modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import config from '../../../../config';
 
 Modal.setAppElement('#root');  // This line is needed for accessibility reasons
 
@@ -19,7 +20,7 @@ const FetchOrganization = () => {
     e.preventDefault()
 
     try{
-      const res = await axios.get(`https://internconnect-yg04.onrender.com/organizations/${organizationId}`)
+      const res = await axios.get(`${config.serverUrl}/organizations/${organizationId}`)
       console.log(res.data);
       alert("Organization fetched successfully");
 

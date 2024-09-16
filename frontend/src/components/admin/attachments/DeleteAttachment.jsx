@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import axios from 'axios'
+import config from '../../../../config';
 
 const DeleteAttachment = () => {
   const [attachmentId, setAttachmentId] = useState('')
@@ -11,7 +12,7 @@ const DeleteAttachment = () => {
   const handleDelete = async (e) => {
     e.preventDefault()
     try {
-      await axios.delete(`https://internconnect-yg04.onrender.com/attachments/${attachmentId}`)
+      await axios.delete(`${config.serverUrl}/attachments/${attachmentId}`)
       alert("Attachment has been deleted successfully.")
 
       // clear attachment id

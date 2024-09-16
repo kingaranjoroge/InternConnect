@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import config from '../../../../config';
 
 const AllOrganizations = () => {
   const [organizations, setOrganizations] = useState([]);
@@ -7,7 +8,7 @@ const AllOrganizations = () => {
   useEffect(() => {
     const fetchOrganizations = async () => {
       try {
-        const response = await axios.get('https://internconnect-yg04.onrender.com/organizations'); 
+        const response = await axios.get(`${config.serverUrl}/organizations`); 
         setOrganizations(response.data);
       } catch (error) {
         console.error('Error fetching organizations:', error);

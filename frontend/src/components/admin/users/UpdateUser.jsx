@@ -1,5 +1,6 @@
 import { useState } from "react"
 import axios from 'axios'
+import config from '../../../../config';
 
 const UpdateUser = () => {
     const [userId, setUserId] = useState('');
@@ -30,7 +31,7 @@ const UpdateUser = () => {
         e.preventDefault();
     
         try {
-          const response = await axios.patch(`https://internconnect-yg04.onrender.com/users/${userId}`, formData);
+          const response = await axios.patch(`${config.serverUrl}/users/${userId}`, formData);
           // Optionally, you can handle success here, like showing a success message or redirecting
           alert('User updated successfully');
           console.log(response.data);

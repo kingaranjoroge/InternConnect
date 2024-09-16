@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios'
+import config from '../../../../config';
 
 const DeleteOrganization = () => {
   const [organizationId, setOrganizationId] = useState('')
@@ -12,7 +13,7 @@ const DeleteOrganization = () => {
     e.preventDefault()
 
     try{
-      await axios.delete(`https://internconnect-yg04.onrender.com/organizations/${organizationId}`)
+      await axios.delete(`${config.serverUrl}/organizations/${organizationId}`)
       alert("Organization deleted successfully");
 
       // clear organization id

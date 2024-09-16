@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import axios from 'axios'
+import config from '../../../../config';
 
 const CreateAttachment = () => {
     const [formData, setFormData] = useState({
@@ -20,7 +21,7 @@ const CreateAttachment = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try{
-            const response = await axios.post('https://internconnect-yg04.onrender.com/attachments', formData);
+            const response = await axios.post(`${config.serverUrl}/attachments`, formData);
             console.log(response.data);
             alert("Attachment created successfully!");
 

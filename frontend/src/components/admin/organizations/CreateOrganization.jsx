@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import axios from 'axios'
+import config from '../../../../config';
 
 const CreateOrganization = () => {
   const [formData, setFormData] = useState({
@@ -18,7 +19,7 @@ const CreateOrganization = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('https://internconnect-yg04.onrender.com/organizations', formData);
+      await axios.post(`${config.serverUrl}/organizations`, formData);
       alert("Organization created successfully!");
 
       // clear form data after successful submission

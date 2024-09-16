@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import config from "../../../config";
 
 const UserRegistration = () => {
     const navigate = useNavigate()
@@ -28,7 +29,7 @@ const UserRegistration = () => {
             if (formData.role === 'admin') {
                 alert("Please enter a valid role (e.g attachee/intern)")
             } else {
-                const res = await axios.post('https://internconnect-yg04.onrender.com/users', formData)
+                const res = await axios.post(`${config.serverUrl}/users`, formData)
                 console.log(res.data)
                 alert('User created successfully')
 

@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelopeCircleCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 import AttachmentsNavbar from '../components/navigation/AttachmentsNavbar';
 import Modal from 'react-modal';
+import config from "../../../config";
 
 Modal.setAppElement('#root');  // This line is needed for accessibility reasons
 
@@ -23,7 +24,7 @@ const Attachments = () => {
 
   const fetchAttachments = async () => {
     try {
-      const response = await axios.get('https://internconnect-yg04.onrender.com/attachments');
+      const response = await axios.get(`${config.serverUrl}/attachments`);
       setAttachments(response.data);
       setFilteredAttachments(response.data);
     } catch (error) {

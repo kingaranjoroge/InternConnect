@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import axios from 'axios'
+import config from '../../../../config';
 
 const UpdateAttachment = () => {
     const [attachmentId, setAttachmentId] = useState('');
@@ -25,7 +26,7 @@ const UpdateAttachment = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try{
-            const response = await axios.patch(`https://internconnect-yg04.onrender.com/attachments/${attachmentId}`, formData);
+            const response = await axios.patch(`${config.serverUrl}/attachments/${attachmentId}`, formData);
             console.log(response.data);
             alert("Attachment updated successfully!");
 

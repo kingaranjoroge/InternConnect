@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
+import config from "../../../config";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ const Login = () => {
     const email = event.target[0].value;
     const password = event.target[1].value;
   
-    const response = await axios.post('https://internconnect-yg04.onrender.com/users/validate', { email, password });
+    const response = await axios.post(`${config.serverUrl}/users/validate`, { email, password });
     if (response.data) {
       localStorage.setItem('user', JSON.stringify(response.data));
       navigate("/");
