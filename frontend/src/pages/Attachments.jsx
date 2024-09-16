@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelopeCircleCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 import AttachmentsNavbar from '../components/navigation/AttachmentsNavbar';
 import Modal from 'react-modal';
-import config from "../../../config";
+import config from '../../config';
 
 Modal.setAppElement('#root');  // This line is needed for accessibility reasons
 
