@@ -28,6 +28,9 @@ const AttachmentsNavbar = ({ onSearch }) => {
         <h1 className="font-bold text-2xl text-slate-200">InternConnect</h1>
       </div>
       <div className="flex flex-row gap-4 pr-8 items-center">
+        <div className="hidden sm:flex flex-row gap-8">
+          <p className="font-bold text-slate-200 text-base pt-2 hover:text-slate-300"><a href="/">Home</a></p>
+        </div>
         <input
           type="text"
           placeholder="Search attachments..."
@@ -35,9 +38,6 @@ const AttachmentsNavbar = ({ onSearch }) => {
           onChange={handleSearch}
           className="px-4 py-2 rounded-md"
         />
-        <div className="hidden sm:flex flex-row gap-8">
-          <p className="font-bold text-slate-200 text-base pt-2 hover:text-slate-300"><a href="/">Home</a></p>
-        </div>
       </div>
       {isMenuOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-10" onClick={closeMenu}>
