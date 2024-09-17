@@ -1,6 +1,5 @@
 [build]
-  command = [build]
-  command = "npm install --include=dev && npm run build"
+  command = "npm install && npm run build"
   publish = "dist"
 
 [[redirects]]
