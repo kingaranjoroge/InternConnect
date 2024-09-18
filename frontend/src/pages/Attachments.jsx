@@ -48,8 +48,8 @@ const Attachments = () => {
     setSelectedAttachment(attachment);
     if (user) {
       navigate('/application', { state: { selectedAttachment: attachment } });
-    } else if (org){
-      alert("You can't apply as an organization")
+    } else if (org) {
+      alert("You can't apply as an organization");
     } else {
       navigate('/sign-in');
     }
@@ -79,11 +79,13 @@ const Attachments = () => {
         </button>
         {selectedAttachment && (
           <h2 className="text-xl font-bold mb-4 text-blue-900 text-center">{selectedAttachment.title}</h2>
-      )}
+        )}
         <div className="overflow-auto">
           <p>{modalContent}</p>
         </div>
       </Modal>
+
+      {/* Responsive section: Flex for large screens, grid for medium and small screens */}
       <section className='flex flex-col p-4 gap-2'>
         {filteredAttachments.length === 0 ? (
           <div className='flex flex-col items-center justify-center h-[75vh]'>
@@ -93,30 +95,33 @@ const Attachments = () => {
             <p className="text-base font-semibold text-gray-400">(might take a moment to fetch items from server...)</p>
           </div>
         ) : (
-          filteredAttachments.map((attachment) => (
-            <div className='flex flex-row w-5/6 border-b-2 border-slate-300 p-4' key={attachment._id}>
-              <div>
-                <FontAwesomeIcon icon={faEnvelopeCircleCheck} size='3x' className='text-blue-800' />
-              </div>
-              <div className='flex flex-col gap-1 w-full pl-5'>
-                <div className='flex flex-row gap-1'>
-                  <h1 className='text-blue-800 font-bold text-lg'>{attachment.title} <span className='text-black font-normal text-base'> | </span> </h1>
-                  <p>{attachment.organization} | </p>
-                  <p>{attachment.email} | </p>
-                  <p>{attachment.phone} | </p>
-                  <p>{attachment.location} | </p>
-                  <p>{attachment.category} | </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:flex lg:flex-col lg:gap-4"> {/* Responsive grid/flex layout */}
+            {filteredAttachments.map((attachment) => (
+              <div className='border border-slate-300 p-4 gap-4 lg:flex lg:flex-row lg:w-5/6 lg:border-b-2 lg:border-slate-300' key={attachment._id}> {/* Flex for large, grid for medium/small */}
+                <div className='flex items-start'>
+                  <FontAwesomeIcon icon={faEnvelopeCircleCheck} size='3x' className='text-blue-800' />
                 </div>
-                <div>
-                  <p>renumeration: <span className='text-blue-800'>{attachment.renumeration}</span></p>
+                <div className='flex flex-col gap-1 w-full lg:pl-5'>
+                  <div className='flex flex-wrap gap-2'>
+                    <h1 className='text-blue-800 font-bold text-sm lg:text-lg'>{attachment.title}</h1>
+                    <span className='text-black font-normal'>|</span>
+                    <p className='text-xs lg:text-lg font-medium'>{attachment.organization}</p>
+                    <p className='text-xs lg:text-lg font-medium'>{attachment.email}</p>
+                    <p className='text-xs lg:text-lg font-medium'>{attachment.phone}</p>
+                    <p className='text-xs lg:text-lg font-medium'>{attachment.location}</p>
+                    <p className='text-xs lg:text-lg font-medium'>{attachment.category}</p>
+                  </div>
+                  <p className='text-xs lg:text-lg font-medium'>
+                    renumeration: <span className='text-blue-800'>{attachment.renumeration}</span>
+                  </p>
+                </div>
+                <div className='flex justify-between gap-3'>
+                  <button className="btn border-blue-800 text-blue-800 hover:bg-blue-800 hover:text-slate-200 px-2" onClick={() => handleDetails(attachment)}>Details</button>
+                  <button className="btn bg-blue-800 text-slate-200 hover:bg-blue-950 px-2" onClick={() => handleNavigate(attachment)}>Apply</button>
                 </div>
               </div>
-              <div className='flex flex-row gap-3'>
-                <button className="btn border-blue-800 text-blue-800 hover:bg-blue-800 hover:text-slate-200" onClick={() => handleDetails(attachment)}>Details</button>
-                <button className="btn bg-blue-800 text-slate-200 hover:bg-blue-950" onClick={() => handleNavigate(attachment)}>Apply</button>
-              </div>
-            </div>
-          ))
+            ))}
+          </div>
         )}
       </section>
     </main>
