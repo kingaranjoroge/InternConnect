@@ -21,9 +21,9 @@ const Home = () => {
                 </p>
             </div>
             <div className="flex flex-col items-center justify-center">
-                <p className="text-[9px] sm:text-sm md:text-base font-semibold text-gray-500">Empower your future with our comprehensive software platform, connecting students to</p>
-                <p className="text-[9px] sm:text-sm md:text-base font-semibold text-gray-500">a vast array of internship and attachment opportunities, ensuring you</p>
-                <p className="text-[9px] sm:text-sm md:text-base font-semibold text-gray-500">find the perfect match to kickstart your career journey.</p>
+                <p className="text-[9px] sm:text-sm md:text-base font-bold sm:font-semibold text-black">Empower your future with our comprehensive software platform, connecting students to</p>
+                <p className="text-[9px] sm:text-sm md:text-base font-bold sm:font-semibold text-black">a vast array of internship and attachment opportunities, ensuring you</p>
+                <p className="text-[9px] sm:text-sm md:text-base font-bold sm:font-semibold text-black">find the perfect match to kickstart your career journey.</p>
             </div>
             <div className="flex flex-row items-center justify-between gap-4 pt-1">
                 <button className="btn bg-blue-800 text-slate-200 px-4 sm:px-16 hover:bg-blue-950" onClick={handleRegisterNavigate}>Register</button>
