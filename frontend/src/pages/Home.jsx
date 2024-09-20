@@ -20,7 +20,7 @@ const Home = () => {
                 <p className="text-blue-800 font-bold text-sm sm:text-xl md:text-2xl lg:text-4xl">Unlock endless internship & attachment possibilities with <br /> our student-centric attachment platform today!
                 </p>
             </div>
-            <div className="flex flex-col items-center justify-center">
+            <div className="flex flex-col items-center justify-center gap-1 sm:gap-0">
                 <p className="text-[9px] sm:text-sm md:text-base font-bold sm:font-semibold text-black">Empower your future with our comprehensive software platform, connecting students to</p>
                 <p className="text-[9px] sm:text-sm md:text-base font-bold sm:font-semibold text-black">a vast array of internship and attachment opportunities, ensuring you</p>
                 <p className="text-[9px] sm:text-sm md:text-base font-bold sm:font-semibold text-black">find the perfect match to kickstart your career journey.</p>
