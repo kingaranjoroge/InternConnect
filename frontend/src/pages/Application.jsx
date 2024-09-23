@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Navbar from "../components/navigation/MainNavbar";
 import axios from 'axios';
 import config from '../../config';
 
 const Application = () => {
+  const navigate = useNavigate()
   const location = useLocation();
   const selectedAttachment = location.state?.selectedAttachment || null;
   // const [selectedFiles, setSelectedFiles] = useState([]);
@@ -66,6 +68,7 @@ const Application = () => {
       });
       console.log('Email sent successfully');
       alert('Email sent successfully')
+      navigate('/')
     } catch (error) {
       console.error('Error sending email:', error);
       alert('Email not sent, please try again')
