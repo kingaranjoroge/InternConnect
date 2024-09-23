@@ -105,14 +105,14 @@ const Attachments = () => {
                   <div className='flex flex-wrap gap-2'>
                     <h1 className='text-blue-800 font-bold text-sm lg:text-lg'>{attachment.title}</h1>
                     <span className='text-black font-normal'>|</span>
-                    <p className='text-xs lg:text-lg font-medium'>{attachment.organization}</p>
-                    <p className='text-xs lg:text-lg font-medium'>{attachment.email}</p>
-                    <p className='text-xs lg:text-lg font-medium'>{attachment.phone}</p>
-                    <p className='text-xs lg:text-lg font-medium'>{attachment.location}</p>
-                    <p className='text-xs lg:text-lg font-medium'>{attachment.category}</p>
+                    <p className='text-xs lg:text-lg font-normal'>{attachment.organization}</p>
+                    <p className='text-xs lg:text-lg font-normal'>{attachment.email}</p>
+                    <p className='text-xs lg:text-lg font-normal'>{attachment.phone}</p>
+                    <p className='text-xs lg:text-lg font-normal'>{attachment.location}</p>
+                    <p className='text-xs lg:text-lg font-normal'>{attachment.category}</p>
                   </div>
-                  <p className='text-xs lg:text-lg font-medium'>
-                    renumeration: <span className='text-blue-800'>{attachment.renumeration}</span>
+                  <p className='text-xs lg:text-lg font-normal'>
+                    renumeration: <span className='text-blue-800 font-semibold'>{attachment.renumeration}</span>
                   </p>
                 </div>
                 <div className='flex justify-between gap-3'>
