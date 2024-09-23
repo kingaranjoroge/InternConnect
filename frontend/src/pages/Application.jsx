@@ -76,8 +76,8 @@ const Application = () => {
     <main>
       <Navbar />
       <section className="flex items-center justify-center h-[87.5vh] overflow-auto">
-        <div className="flex items-center justify-center w-3/4 h-5/6 bg-blue-100 shadow-2xl rounded overflow-auto">
-          <form className="flex flex-col w-1/2 h-full" onSubmit={handleSubmit}>
+        <div className="flex items-center justify-center w-11/12 sm:w-3/4 h-5/6 bg-blue-100 shadow-2xl rounded overflow-auto">
+          <form className="flex flex-col w-11/12 sm:w-3/4 lg:w-1/2 h-full" onSubmit={handleSubmit}>
             <div className="flex flex-col gap-2 p-3 pt-4">
               <input
                 type="text"
