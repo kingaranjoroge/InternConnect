@@ -28,7 +28,7 @@ const Login = () => {
 
   return (
     <main className="flex items-center justify-center w-screen h-screen">
-      <form className="flex flex-col gap-4 w-1/3" onSubmit={handleLogin}>
+      <form className="flex flex-col gap-4 w-3/4 sm:w-1/2 lg:w-1/3" onSubmit={handleLogin}>
         <div className="flex items-center justify-center">
           <h1 className="text-blue-800 font-bold text-lg">Login</h1>
         </div>
