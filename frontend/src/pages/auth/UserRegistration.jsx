@@ -57,7 +57,7 @@ const UserRegistration = () => {
     }
 
   return (
-    <main className="flex items-center justify-center w-screen h-full">
+    <main className="flex items-center justify-center w-screen min-h-screen overflow-auto">
         <form className="flex flex-col gap-2 w-3/4 sm:w-auto" onSubmit={handleSubmit}>
             <div className="flex items-center justify-center py-3">
                 <h1 className="text-blue-800 font-bold text-lg">Register</h1>
