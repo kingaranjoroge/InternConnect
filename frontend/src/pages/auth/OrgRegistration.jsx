@@ -37,7 +37,7 @@ const OrgRegistration = () => {
       };
 
   return (
-    <main className="flex items-center justify-center w-screen h-full">
+    <main className="flex items-center justify-center w-screen h-screen">
         <form className="flex flex-col gap-2 w-3/4 sm:w-3/5 md:w-1/2 lg:w-1/3" onSubmit={handleSubmit}>
             <div className="flex items-center justify-center py-3">
                 <h1 className="text-blue-800 font-bold text-lg">Register</h1>
