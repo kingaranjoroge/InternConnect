@@ -52,7 +52,7 @@ const CreateUser = () => {
     <main className="flex flex-col gap-2">
         <h1 className="text-blue-800 font-semibold">Create User</h1>
         <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
-            <div className="flex flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
                 <div className="flex flex-col gap-2">
                     <input 
                         type="text" 
