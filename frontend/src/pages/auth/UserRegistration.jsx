@@ -57,12 +57,12 @@ const UserRegistration = () => {
     }
 
   return (
-    <main className="flex items-center justify-center w-screen h-screen">
-        <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
+    <main className="flex items-center justify-center w-screen h-full">
+        <form className="flex flex-col gap-2 w-3/4 sm:w-auto" onSubmit={handleSubmit}>
             <div className="flex items-center justify-center pb-3">
                 <h1 className="text-blue-800 font-bold text-lg">Register</h1>
             </div>
-            <div className="flex flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
                 <div className="flex flex-col gap-2">
                     <input 
                         type="text" 
