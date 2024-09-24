@@ -9,11 +9,11 @@ const OrgAdmin = () => {
   return (
     <main className="flex flex-col">
         <OrgAdminNavbar />
-        <section className="flex flex-row gap-4 px-4 py-4" style={{ minHeight: '90vh' }}>
-            <section className="bg-slate-200 w-1/2 rounded overflow-auto">
+        <section className="flex flex-col lg:flex-row gap-4 px-4 py-4" style={{ minHeight: '90vh' }}>
+            <section className="bg-slate-200 w-full lg:w-1/2 rounded overflow-auto">
                 <Attachments />
             </section>
-            <section className="flex flex-col gap-6 bg-slate-200 w-1/2 rounded p-4">
+            <section className="flex flex-col gap-6 bg-slate-200 w-full lg:w-1/2 rounded p-4">
                 <CreateAttachment />
                 <UpdateAttachment />
                 <FetchAttachment />
@@ -21,7 +21,6 @@ const OrgAdmin = () => {
             </section>
         </section>   
     </main>
-     
   )
 }
 
