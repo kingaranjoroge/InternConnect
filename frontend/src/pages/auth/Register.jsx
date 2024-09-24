@@ -1,16 +1,22 @@
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 const Register = () => {
   return (
-    <main className="flex flex-row w-screen h-screen">
-        <section className="flex items-center justify-center w-1/2 bg-slate-200">
-            <div className="bg-blue-800 font-semibold p-3 rounded-xl text-slate-200 hover:bg-blue-600"><Link to="/user-registration">Register as an Attachee / Intern</Link></div>
-        </section>
-        <section className="flex items-center justify-center w-1/2 bg-blue-800">
-            <div className="bg-slate-200 font-semibold p-3 rounded-xl text-black hover:bg-slate-400"><Link to="/org-registration">Register as an Organization</Link></div>
-        </section>
+    <main className="flex flex-col gap-4 items-center justify-center w-full h-screen">
+      <div
+        className="bg-slate-200 hover:bg-blue-800 font-semibold p-3 rounded-3xl text-blue-800 hover:text-slate-200 text-sm outline-double hover:outline-blue-800 w-64 md:w-72 flex items-center justify-center"
+        style={{ outlineWidth: '4px'}}
+      >
+        <Link to="/user-registration">Register as an Attachee / Intern</Link>
+      </div>
+      <div
+        className="bg-slate-200 hover:bg-blue-800 font-semibold p-3 rounded-3xl text-blue-800 hover:text-slate-200 text-sm outline-double hover:outline-blue-800 w-64 md:w-72 flex items-center justify-center"
+        style={{ outlineWidth: '4px'}}
+      >
+        <Link to="/org-registration">Register as an Organization</Link>
+      </div>
     </main>
-  )
-}
+  );
+};
 
-export default Register
+export default Register;
