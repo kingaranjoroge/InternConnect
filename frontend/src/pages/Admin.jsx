@@ -10,7 +10,7 @@ const Admin = () => {
   };
 
   return (
-    <main className="w-screen h-screen">
+    <main className="min-h-screen bg-gradient-to-br from-surface-50 via-white to-primary-50/30">
       <Navbar onSectionChange={handleSectionChange} />
       <Body activeSection={activeSection} />
     </main>

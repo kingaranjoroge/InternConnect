@@ -41,38 +41,33 @@ const FetchUser = () => {
   };
 
   return (
-    <main className="flex flex-col gap-2">
-      <h1 className="text-blue-800 font-semibold">Fetch User</h1>
-        <form className="flex flex-row gap-4" onSubmit={handleSubmit}>
-          <div>
-            <input 
-              type="text" 
-              placeholder="user id"
-              className="input input-bordered"
-              value={userId}
-              onChange={handleUserIdChange}
-            />
-          </div>
-          <button type='submit' className="btn bg-blue-800 w-1/4 text-slate-200 hover:bg-blue-950">Fetch User</button>
-        </form>
-        <Modal
-          isOpen={modalIsOpen}
-          onRequestClose={closeModal}
-          className="flex flex-col p-4 bg-slate-200 rounded shadow-lg overflow-auto max-w-4xl max-h-96 w-11/12 h-5/6 mx-auto mt-10"
-          overlayClassName="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
-        >
-          <button onClick={closeModal} className="self-end mb-2">
-            <FontAwesomeIcon icon={faTimes} />
+    <div className="card p-5">
+      <h2 className="text-lg font-bold text-primary-900 mb-4">Fetch User</h2>
+      <form className="flex flex-col sm:flex-row gap-3" onSubmit={handleSubmit}>
+        <input type="text" placeholder="user id" className="input-field flex-1" value={userId} onChange={handleUserIdChange} />
+        <button type="submit" className="btn-primary shrink-0">Fetch User</button>
+      </form>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        className="card max-w-2xl w-[95vw] max-h-[80vh] mx-auto mt-6 p-6 outline-none"
+        overlayClassName="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+      >
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="text-lg font-bold text-primary-900">User details</h3>
+          <button onClick={closeModal} className="p-2 rounded-lg text-slate-500 hover:bg-surface-200" aria-label="Close">
+            <FontAwesomeIcon icon={faTimes} className="w-5 h-5" />
           </button>
-          {modalContent && (
-            <div className="overflow-auto">
-              {Object.entries(modalContent).map(([key, value]) => (
-                <p key={key}><strong className="text-blue-900">{key}:</strong> {value}</p>
-              ))}
-            </div>
-          )}
-        </Modal>
-    </main>
+        </div>
+        {modalContent && (
+          <div className="overflow-auto space-y-2 text-sm">
+            {Object.entries(modalContent).map(([key, value]) => (
+              <p key={key}><strong className="text-primary-800">{key}:</strong> <span className="text-slate-700">{String(value)}</span></p>
+            ))}
+          </div>
+        )}
+      </Modal>
+    </div>
   )
 }
 

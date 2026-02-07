@@ -6,62 +6,56 @@ const Attachments = () => {
   const [attachments, setAttachments] = useState([]);
   const [organization, setOrganization] = useState('');
 
-const fetchAttachments = async () => {
+  const fetchAttachments = async () => {
     try {
-        const response = await axios.get(`${config.serverUrl}/attachments/organization/${organization}`); 
-        setAttachments(response.data);
+      const response = await axios.get(`${config.serverUrl}/attachments/organization/${organization}`);
+      setAttachments(response.data);
     } catch (error) {
-        console.error('Error fetching attachments:', error);
+      console.error('Error fetching attachments:', error);
     }
-    };
+  };
 
   return (
-    <main className="flex flex-col gap-2 p-4 pt-1">
-      <div className="flex justify-center">
-        <h1 className="text-blue-800 font-semibold">Attachments</h1>
-      </div>
-      <div className='flex flex-row gap-2'>
-        <input 
-          type="text" 
-          className="input input-bordered"
-          value={organization} 
-          onChange={e => setOrganization(e.target.value)} 
-          placeholder="use (organization2))"
+    <div className="p-5">
+      <h2 className="text-lg font-bold text-primary-900 mb-4">Attachments</h2>
+      <div className="flex flex-col sm:flex-row gap-3 mb-4">
+        <input
+          type="text"
+          className="input-field flex-1"
+          value={organization}
+          onChange={(e) => setOrganization(e.target.value)}
+          placeholder="Organization name (e.g. organization2)"
         />
-        <button className="btn bg-blue-800 w-1/4 text-slate-200 hover:bg-blue-950" onClick={fetchAttachments}>Fetch Attachments</button>
+        <button className="btn-primary shrink-0" onClick={fetchAttachments}>
+          Fetch Attachments
+        </button>
       </div>
-      <table>
-        <thead className="bg-blue-800 text-slate-200">
-          <tr>
-            <th className="pr-4">Title</th>
-            <th className="pr-4">Id</th>
-            {/* <th className="pr-4">Organization</th>
-            <th className="pr-4">Email</th>
-            <th className="pr-4">Phone</th>
-            <th className="pr-4">Location</th> */}
-            <th className="pr-4">Category</th>
-            {/* <th className="pr-4">Description</th> */}
-            <th className='pr-4'>Renumeration</th>
-          </tr>
-        </thead>
-        <tbody className="divide-y divide-gray-400">
-          {attachments.map(attachment => (
-            <tr key={attachment._id}>
-              <td className="pr-4 pb-2">{attachment.title}</td>
-              <td className="pr-4 pb-2">{attachment._id}</td>
-              {/* <td className="pr-4 pb-2">{attachment.organization}</td>
-              <td className="pr-4 pb-2">{attachment.email}</td>
-              <td className="pr-4 pb-2">{attachment.phone}</td>
-              <td className="pr-4 pb-2">{attachment.location}</td> */}
-              <td className="pr-4 pb-2">{attachment.category}</td>
-              {/* <td className="pr-4 pb-2">{attachment.description}</td> */}
-              <td className="pr-4 pb-2">{attachment.renumeration}</td>
+      <div className="overflow-x-auto rounded-lg border border-surface-200">
+        <table className="w-full text-sm text-left">
+          <thead className="bg-primary-800 text-white">
+            <tr>
+              <th className="px-4 py-3 font-semibold">Title</th>
+              <th className="px-4 py-3 font-semibold">Id</th>
+              <th className="px-4 py-3 font-semibold">Category</th>
+              <th className="px-4 py-3 font-semibold">Renumeration</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-    </main>
+          </thead>
+          <tbody className="divide-y divide-surface-200 bg-white">
+            {attachments.map((attachment) => (
+              <tr key={attachment._id} className="hover:bg-surface-50 transition-colors">
+                <td className="px-4 py-3 text-slate-800 font-medium">{attachment.title}</td>
+                <td className="px-4 py-3 text-slate-600 font-mono text-xs">{attachment._id}</td>
+                <td className="px-4 py-3">
+                  <span className="px-2 py-0.5 rounded-md bg-primary-100 text-primary-800 text-xs font-medium">{attachment.category}</span>
+                </td>
+                <td className="px-4 py-3 text-slate-800">{attachment.renumeration}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
   );
-}
+};
 
 export default Attachments;

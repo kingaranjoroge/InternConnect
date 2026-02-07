@@ -36,61 +36,21 @@ const UpdateOrganization = () => {
   }
 
   return (
-    <main className="flex flex-col gap-2">
-      <h1 className="text-blue-800 font-semibold">Update Organization</h1>
-      <form className="flex flex-col gap-2"  onSubmit={handleSubmit}>
-        <div className="flex flex-col gap-2">
-          <input 
-            type="text" 
-            placeholder="organization id"
-            className="input input-bordered"
-            value={organizationId}
-            onChange={handleOrganizationIdChange}
-          />
-          <input 
-            type="text" 
-            placeholder="name"
-            className="input input-bordered"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-          />
-          <input 
-            type="email" 
-            placeholder="email"
-            className="input input-bordered"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-          />
-          <input 
-            type="tel" 
-            placeholder="phone"
-            className="input input-bordered"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-          />
-          <input 
-            type="text" 
-            placeholder="location"
-            className="input input-bordered"
-            name="location"
-            value={formData.location}
-            onChange={handleChange}
-          />
-          <input 
-            type="text" 
-            placeholder="password"
-            className="input input-bordered"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-          />
+    <div className="card p-5">
+      <h2 className="text-lg font-bold text-primary-900 mb-4">Update Organization</h2>
+      <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
+        <div>
+          <label className="block text-sm font-medium text-slate-700 mb-1">Organization ID</label>
+          <input type="text" placeholder="organization id" className="input-field" value={organizationId} onChange={handleOrganizationIdChange} />
         </div>
-        <button type='submit' className="btn bg-blue-800 w-1/2 text-slate-200 hover:bg-blue-950">Update Organization</button>
+        <input type="text" placeholder="name" className="input-field" name="name" value={formData.name} onChange={handleChange} />
+        <input type="email" placeholder="email" className="input-field" name="email" value={formData.email} onChange={handleChange} />
+        <input type="tel" placeholder="phone" className="input-field" name="phone" value={formData.phone} onChange={handleChange} />
+        <input type="text" placeholder="location" className="input-field" name="location" value={formData.location} onChange={handleChange} />
+        <input type="password" placeholder="password" className="input-field" name="password" value={formData.password} onChange={handleChange} />
+        <button type="submit" className="btn-primary w-fit mt-1">Update Organization</button>
       </form>
-   </main>
+    </div>
   )
 }
 

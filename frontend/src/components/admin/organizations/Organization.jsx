@@ -6,19 +6,17 @@ import DeleteOrganization from './DeleteOrganization'
 
 const Organization = () => {
   return (
-    <main className="flex flex-col lg:flex-row gap-4 px-4 py-4" style={{ minHeight: '90vh' }}>
-      <section className="bg-slate-200 w-full lg:w-1/2 rounded overflow-auto max-h-[75vh] lg:max-h-max">
+    <main className="flex flex-col lg:flex-row gap-6 max-w-7xl mx-auto" style={{ minHeight: '70vh' }}>
+      <section className="card w-full lg:w-1/2 overflow-auto max-h-[75vh] lg:max-h-none">
         <AllOrganizations />
       </section>
-      <section className="flex flex-col bg-slate-200 w-full lg:w-1/2 rounded p-4 gap-6">
-        <div className="flex flex-col sm:flex-row gap-6 sm:gap-12">
+      <section className="flex flex-col gap-6 w-full lg:w-1/2">
+        <div className="flex flex-col sm:flex-row gap-6">
           <CreateOrganization />
           <UpdateOrganization />
         </div>
-        <div className="flex flex-col gap-6">
-          <FetchOrganization />
-          <DeleteOrganization />
-        </div>
+        <FetchOrganization />
+        <DeleteOrganization />
       </section>
     </main>
   )

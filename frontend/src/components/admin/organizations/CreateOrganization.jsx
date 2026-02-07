@@ -31,54 +31,17 @@ const CreateOrganization = () => {
   };
 
   return (
-   <main className="flex flex-col gap-2">
-      <h1 className="text-blue-800 font-semibold">Create Organization</h1>
-      <form className="flex flex-col gap-2"  onSubmit={handleSubmit}>
-        <div className="flex flex-col gap-2">
-          <input 
-            type="text" 
-            placeholder="name"
-            className="input input-bordered"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-          />
-          <input 
-            type="email" 
-            placeholder="email"
-            className="input input-bordered"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-          />
-          <input 
-            type="tel" 
-            placeholder="phone"
-            className="input input-bordered"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-          />
-          <input 
-            type="text" 
-            placeholder="location"
-            className="input input-bordered"
-            name="location"
-            value={formData.location}
-            onChange={handleChange}
-          />
-          <input 
-            type="text" 
-            placeholder="password"
-            className="input input-bordered"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-          />
-        </div>
-        <button type='submit' className="btn bg-blue-800 w-1/2 text-slate-200 hover:bg-blue-950">Create Organization</button>
+    <div className="card p-5">
+      <h2 className="text-lg font-bold text-primary-900 mb-4">Create Organization</h2>
+      <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
+        <input type="text" placeholder="name" className="input-field" name="name" value={formData.name} onChange={handleChange} />
+        <input type="email" placeholder="email" className="input-field" name="email" value={formData.email} onChange={handleChange} />
+        <input type="tel" placeholder="phone" className="input-field" name="phone" value={formData.phone} onChange={handleChange} />
+        <input type="text" placeholder="location" className="input-field" name="location" value={formData.location} onChange={handleChange} />
+        <input type="password" placeholder="password" className="input-field" name="password" value={formData.password} onChange={handleChange} />
+        <button type="submit" className="btn-primary w-fit mt-1">Create Organization</button>
       </form>
-   </main>
+    </div>
   )
 }
 

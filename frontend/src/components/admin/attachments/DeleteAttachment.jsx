@@ -3,43 +3,41 @@ import axios from 'axios'
 import config from '../../../../config';
 
 const DeleteAttachment = () => {
-  const [attachmentId, setAttachmentId] = useState('')
+  const [attachmentId, setAttachmentId] = useState('');
 
   const handleAttachmentIdChange = (e) => {
-    setAttachmentId(e.target.value)
-  }
+    setAttachmentId(e.target.value);
+  };
 
   const handleDelete = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
-      await axios.delete(`${config.serverUrl}/attachments/${attachmentId}`)
-      alert("Attachment has been deleted successfully.")
-
-      // clear attachment id
-      setAttachmentId('')
+      await axios.delete(`${config.serverUrl}/attachments/${attachmentId}`);
+      alert("Attachment has been deleted successfully.");
+      setAttachmentId('');
     } catch (err) {
-      console.log(err.message)
-      alert("Attachment not deleted successfully")
+      console.log(err.message);
+      alert("Attachment not deleted successfully");
     }
-  }
+  };
 
-    return (
-      <main className="flex flex-col gap-2">
-        <h1 className="text-blue-800 font-semibold">Delete Attachment</h1>
-          <form className="flex flex-row gap-4" onSubmit={handleDelete}>
-            <div>
-              <input 
-                type="text" 
-                placeholder="attachment id"
-                className="input input-bordered"
-                value={attachmentId}
-                onChange={handleAttachmentIdChange}
-              />
-            </div>
-            <button type='submit' className="btn bg-blue-800 w-1/4 text-slate-200 hover:bg-blue-950">Delete Attachment</button>
-          </form>
-      </main>
-    )
-  }
-  
-  export default DeleteAttachment
+  return (
+    <div className="card p-5">
+      <h2 className="text-lg font-bold text-primary-900 mb-4">Delete Attachment</h2>
+      <form className="flex flex-col sm:flex-row gap-3" onSubmit={handleDelete}>
+        <input
+          type="text"
+          placeholder="attachment id"
+          className="input-field flex-1"
+          value={attachmentId}
+          onChange={handleAttachmentIdChange}
+        />
+        <button type="submit" className="btn-primary shrink-0 bg-red-600 hover:bg-red-700 focus:ring-red-500/30">
+          Delete Attachment
+        </button>
+      </form>
+    </div>
+  );
+};
+
+export default DeleteAttachment;

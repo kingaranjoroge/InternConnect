@@ -8,7 +8,7 @@ const AllAttachments = () => {
   useEffect(() => {
     const fetchAttachments = async () => {
       try {
-        const response = await axios.get(`${config.serverUrl}/attachments`); 
+        const response = await axios.get(`${config.serverUrl}/attachments`);
         setAttachments(response.data);
       } catch (error) {
         console.error('Error fetching attachments:', error);
@@ -19,42 +19,42 @@ const AllAttachments = () => {
   }, []);
 
   return (
-    <main className="flex flex-col gap-2 p-4 pt-1">
-      <div className="flex justify-center">
-        <h1 className="text-blue-800 font-semibold">Attachments</h1>
-      </div>
-      <table>
-        <thead className="bg-blue-800 text-slate-200">
-          <tr>
-            <th className="pr-4">Title</th>
-            <th className="pr-4">Id</th>
-            <th className="pr-4">Organization</th>
-            <th className="pr-4">Email</th>
-            <th className="pr-4">Phone</th>
-            <th className="pr-4">Location</th>
-            <th className="pr-4">Category</th>
-            {/* <th className="pr-4">Description</th> */}
-            <th className='pr-4'>Renumeration</th>
-          </tr>
-        </thead>
-        <tbody className="divide-y divide-gray-400">
-          {attachments.map(attachment => (
-            <tr key={attachment._id}>
-              <td className="pr-4 pb-2">{attachment.title}</td>
-              <td className="pr-4 pb-2">{attachment._id}</td>
-              <td className="pr-4 pb-2">{attachment.organization}</td>
-              <td className="pr-4 pb-2">{attachment.email}</td>
-              <td className="pr-4 pb-2">{attachment.phone}</td>
-              <td className="pr-4 pb-2">{attachment.location}</td>
-              <td className="pr-4 pb-2">{attachment.category}</td>
-              {/* <td className="pr-4 pb-2">{attachment.description}</td> */}
-              <td className="pr-4 pb-2">{attachment.renumeration}</td>
+    <div className="p-5">
+      <h2 className="text-lg font-bold text-primary-900 mb-4">Attachments</h2>
+      <div className="overflow-x-auto rounded-lg border border-surface-200">
+        <table className="w-full text-sm text-left">
+          <thead className="bg-primary-800 text-white">
+            <tr>
+              <th className="px-4 py-3 font-semibold">Title</th>
+              <th className="px-4 py-3 font-semibold">Id</th>
+              <th className="px-4 py-3 font-semibold">Organization</th>
+              <th className="px-4 py-3 font-semibold">Email</th>
+              <th className="px-4 py-3 font-semibold">Phone</th>
+              <th className="px-4 py-3 font-semibold">Location</th>
+              <th className="px-4 py-3 font-semibold">Category</th>
+              <th className="px-4 py-3 font-semibold">Renumeration</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-    </main>
+          </thead>
+          <tbody className="divide-y divide-surface-200 bg-white">
+            {attachments.map((attachment) => (
+              <tr key={attachment._id} className="hover:bg-surface-50 transition-colors">
+                <td className="px-4 py-3 text-slate-800 font-medium">{attachment.title}</td>
+                <td className="px-4 py-3 text-slate-600 font-mono text-xs">{attachment._id}</td>
+                <td className="px-4 py-3 text-slate-800">{attachment.organization}</td>
+                <td className="px-4 py-3 text-slate-800">{attachment.email}</td>
+                <td className="px-4 py-3 text-slate-800">{attachment.phone}</td>
+                <td className="px-4 py-3 text-slate-800">{attachment.location}</td>
+                <td className="px-4 py-3">
+                  <span className="px-2 py-0.5 rounded-md bg-primary-100 text-primary-800 text-xs font-medium">{attachment.category}</span>
+                </td>
+                <td className="px-4 py-3 text-slate-800">{attachment.renumeration}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
   );
-}
+};
 
 export default AllAttachments;

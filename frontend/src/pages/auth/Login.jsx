@@ -7,16 +7,15 @@ const Login = () => {
 
   const handleLogin = async (event) => {
     event.preventDefault();
-  
-    // Check if 'user' or 'org' already exists in localStorage
+
     if (localStorage.getItem('user') || localStorage.getItem('org')) {
       alert('Already logged in. Please log out first.');
       return;
     }
-  
+
     const email = event.target[0].value;
     const password = event.target[1].value;
-  
+
     const response = await axios.post(`${config.serverUrl}/users/validate`, { email, password });
     if (response.data) {
       localStorage.setItem('user', JSON.stringify(response.data));
@@ -27,33 +26,45 @@ const Login = () => {
   };
 
   return (
-    <main className="flex items-center justify-center w-screen h-screen">
-      <form className="flex flex-col gap-4 w-3/4 sm:w-1/2 lg:w-1/3" onSubmit={handleLogin}>
-        <div className="flex items-center justify-center">
-          <h1 className="text-blue-800 font-bold text-lg">Login</h1>
+    <main className="min-h-screen flex items-center justify-center bg-gradient-to-br from-surface-50 via-white to-primary-50/30 px-4 py-12">
+      <div className="card w-full max-w-md p-8">
+        <div className="text-center mb-8">
+          <h1 className="text-2xl font-bold text-primary-900">Sign in</h1>
+          <p className="text-slate-600 text-sm mt-1">Welcome back to InternConnect</p>
         </div>
-        <div className="flex flex-col gap-4">
-          <input
-            type="email"
-            placeholder="email14@gmail.com"
-            className="input input-bordered"
-            required
-          />
-          <input
-            type="password"
-            placeholder="014"
-            className="input input-bordered"
-            required
-          />
-          <p className="place-self-center">Don't have an account? <a className="text-blue-800" href="/sign-up">Register</a></p>
-          <p className="place-self-center"><a className="text-blue-800" href="/org-signin">Click here to login as an organization</a></p>
-        </div>
-        <div className="flex items-center justify-center">
-          <button type="submit" className="btn bg-blue-800 w-1/2 text-slate-200 hover:bg-blue-950">
-            Login
+        <form className="flex flex-col gap-5" onSubmit={handleLogin}>
+          <div>
+            <label className="block text-sm font-medium text-slate-700 mb-1.5">Email</label>
+            <input
+              type="email"
+              placeholder="you@example.com"
+              className="input-field"
+              required
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-slate-700 mb-1.5">Password</label>
+            <input
+              type="password"
+              placeholder="••••••••"
+              className="input-field"
+              required
+            />
+          </div>
+          <button type="submit" className="btn-primary w-full py-3 mt-2">
+            Sign in
           </button>
+        </form>
+        <div className="mt-6 text-center space-y-2 text-sm">
+          <p className="text-slate-600">
+            Don't have an account?{' '}
+            <a className="font-semibold text-primary-700 hover:text-primary-800 underline underline-offset-2" href="/sign-up">Register</a>
+          </p>
+          <p className="text-slate-600">
+            <a className="font-semibold text-primary-700 hover:text-primary-800 underline underline-offset-2" href="/org-signin">Sign in as an organization</a>
+          </p>
         </div>
-      </form>
+      </div>
     </main>
   );
 };

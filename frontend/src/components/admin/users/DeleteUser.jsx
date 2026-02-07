@@ -25,21 +25,13 @@ const DeleteUser = () => {
   }
 
   return (
-    <main className="flex flex-col gap-2">
-      <h1 className="text-blue-800 font-semibold">Delete User</h1>
-        <form className="flex flex-row gap-4" onSubmit={handleDelete}>
-          <div>
-            <input 
-              type="text" 
-              placeholder="user id"
-              className="input input-bordered"
-              value={userId}
-              onChange={handleUserIdChange}
-            />
-          </div>
-          <button type='submit' className="btn bg-blue-800 w-1/4 text-slate-200 hover:bg-blue-950">Delete User</button>
-        </form>
-    </main>
+    <div className="card p-5">
+      <h2 className="text-lg font-bold text-primary-900 mb-4">Delete User</h2>
+      <form className="flex flex-col sm:flex-row gap-3" onSubmit={handleDelete}>
+        <input type="text" placeholder="user id" className="input-field flex-1" value={userId} onChange={handleUserIdChange} />
+        <button type="submit" className="btn-primary shrink-0 bg-red-600 hover:bg-red-700 focus:ring-red-500/30">Delete User</button>
+      </form>
+    </div>
   )
 }
 

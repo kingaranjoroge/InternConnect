@@ -26,21 +26,13 @@ const DeleteOrganization = () => {
   }
 
   return (
-    <main className="flex flex-col gap-2">
-      <h1 className="text-blue-800 font-semibold">Delete Organization</h1>
-        <form className="flex flex-row gap-4" onSubmit={handleDelete}>
-          <div>
-            <input 
-              type="text" 
-              placeholder="organization id"
-              className="input input-bordered"
-              value={organizationId}
-              onChange={handleOrganizationIdChange}
-            />
-          </div>
-          <button type="submit" className="btn bg-blue-800 w-1/4 text-slate-200 hover:bg-blue-950">Delete Organization</button>
-        </form>
-    </main>
+    <div className="card p-5">
+      <h2 className="text-lg font-bold text-primary-900 mb-4">Delete Organization</h2>
+      <form className="flex flex-col sm:flex-row gap-3" onSubmit={handleDelete}>
+        <input type="text" placeholder="organization id" className="input-field flex-1" value={organizationId} onChange={handleOrganizationIdChange} />
+        <button type="submit" className="btn-primary shrink-0 bg-red-600 hover:bg-red-700 focus:ring-red-500/30">Delete Organization</button>
+      </form>
+    </div>
   )
 }
 

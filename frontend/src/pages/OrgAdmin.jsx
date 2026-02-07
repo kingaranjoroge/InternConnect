@@ -7,19 +7,19 @@ import OrgAdminNavbar from "../components/navigation/OrgAdminNavbar"
 
 const OrgAdmin = () => {
   return (
-    <main className="flex flex-col">
-        <OrgAdminNavbar />
-        <section className="flex flex-col lg:flex-row gap-4 px-4 py-4" style={{ minHeight: '90vh' }}>
-            <section className="bg-slate-200 w-full lg:w-1/2 rounded overflow-auto max-h-[75vh] lg:max-h-max">
-                <Attachments />
-            </section>
-            <section className="flex flex-col gap-6 bg-slate-200 w-full lg:w-1/2 rounded p-4">
-                <CreateAttachment />
-                <UpdateAttachment />
-                <FetchAttachment />
-                <DeleteAttachment />
-            </section>
-        </section>   
+    <main className="min-h-screen bg-gradient-to-br from-surface-50 via-white to-primary-50/30">
+      <OrgAdminNavbar />
+      <section className="flex flex-col lg:flex-row gap-6 p-4 md:p-8 max-w-7xl mx-auto" style={{ minHeight: '90vh' }}>
+        <section className="card w-full lg:w-1/2 overflow-auto max-h-[75vh] lg:max-h-none">
+          <Attachments />
+        </section>
+        <section className="flex flex-col gap-6 w-full lg:w-1/2">
+          <CreateAttachment />
+          <UpdateAttachment />
+          <FetchAttachment />
+          <DeleteAttachment />
+        </section>
+      </section>
     </main>
   )
 }

@@ -2,12 +2,12 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelopeCircleCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faBriefcase, faTimes } from '@fortawesome/free-solid-svg-icons';
 import AttachmentsNavbar from '../components/navigation/AttachmentsNavbar';
 import Modal from 'react-modal';
 import config from '../../config';
 
-Modal.setAppElement('#root');  // This line is needed for accessibility reasons
+Modal.setAppElement('#root');
 
 const Attachments = () => {
   const navigate = useNavigate();
@@ -66,58 +66,84 @@ const Attachments = () => {
   };
 
   return (
-    <main>
+    <main className="min-h-screen bg-gradient-to-br from-surface-50 via-white to-primary-50/30">
       <AttachmentsNavbar onSearch={handleSearch} />
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
-        className="flex flex-col p-4 bg-slate-200 rounded shadow-lg overflow-auto max-w-6xl max-h-[30rem] w-11/12 h-5/6 mx-auto mt-10 text-xs leading-5 sm:text-sm sm:leading-6"
-        overlayClassName="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
+        className="card max-w-3xl w-[95vw] max-h-[85vh] mx-auto mt-12 p-6 outline-none"
+        overlayClassName="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4"
       >
-        <button onClick={closeModal} className="self-end mb-2">
-          <FontAwesomeIcon icon={faTimes} />
-        </button>
-        {selectedAttachment && (
-          <h2 className="text-xl font-bold mb-4 text-blue-900 text-center">{selectedAttachment.title}</h2>
-        )}
-        <div className="overflow-auto">
-          <p>{modalContent}</p>
+        <div className="flex items-start justify-between gap-4 mb-4">
+          {selectedAttachment && (
+            <h2 className="text-xl font-bold text-primary-900 pr-8">{selectedAttachment.title}</h2>
+          )}
+          <button
+            onClick={closeModal}
+            className="p-2 rounded-lg text-slate-500 hover:bg-surface-200 hover:text-slate-700 transition-colors shrink-0"
+            aria-label="Close"
+          >
+            <FontAwesomeIcon icon={faTimes} className="w-5 h-5" />
+          </button>
+        </div>
+        <div className="overflow-auto text-slate-600 leading-relaxed max-h-[60vh]">
+          <p className="whitespace-pre-wrap">{modalContent}</p>
         </div>
       </Modal>
 
-      {/* Responsive section: Flex for large screens, grid for medium and small screens */}
-      <section className='flex flex-col p-4 gap-2'>
+      <section className="p-4 md:p-8 max-w-6xl mx-auto">
         {filteredAttachments.length === 0 ? (
-          <div className='flex flex-col items-center justify-center h-[75vh]'>
-            <p className='text-xl font-bold'>No attachments found</p>
-            <p>Try searching with different keywords</p>
-            <br />
-            <p className="text-base font-semibold text-gray-400">(might take a moment to fetch items from server...)</p>
+          <div className="card flex flex-col items-center justify-center py-16 px-6 text-center">
+            <div className="w-16 h-16 rounded-2xl bg-surface-200 flex items-center justify-center text-slate-400 mb-4">
+              <FontAwesomeIcon icon={faBriefcase} className="w-8 h-8" />
+            </div>
+            <p className="text-lg font-semibold text-slate-800">No attachments found</p>
+            <p className="text-slate-600 text-sm mt-1">Try searching with different keywords</p>
+            <p className="text-slate-500 text-xs mt-3">(Items may take a moment to load from the server)</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:flex lg:flex-col lg:gap-4"> {/* Responsive grid/flex layout */}
+          <div className="grid grid-cols-1 lg:grid-cols-1 gap-4">
             {filteredAttachments.map((attachment) => (
-              <div className='border border-slate-300 p-4 gap-4 lg:flex lg:flex-row lg:w-5/6 lg:border-b-2 lg:border-slate-300' key={attachment._id}> {/* Flex for large, grid for medium/small */}
-                <div className='flex items-start'>
-                  <FontAwesomeIcon icon={faEnvelopeCircleCheck} size='3x' className='text-blue-800' />
-                </div>
-                <div className='flex flex-col gap-1 w-full lg:pl-5'>
-                  <div className='flex flex-wrap gap-2'>
-                    <h1 className='text-blue-800 font-bold text-sm lg:text-lg'>{attachment.title}</h1>
-                    <span className='text-black font-normal'>|</span>
-                    <p className='text-xs lg:text-lg font-normal'>{attachment.organization}</p>
-                    <p className='text-xs lg:text-lg font-normal'>{attachment.email}</p>
-                    <p className='text-xs lg:text-lg font-normal'>{attachment.phone}</p>
-                    <p className='text-xs lg:text-lg font-normal'>{attachment.location}</p>
-                    <p className='text-xs lg:text-lg font-normal'>{attachment.category}</p>
+              <div
+                key={attachment._id}
+                className="card p-5 hover:shadow-card-hover transition-shadow duration-200"
+              >
+                <div className="flex flex-col md:flex-row md:items-start gap-4">
+                  <div className="flex items-start gap-4 flex-1 min-w-0">
+                    <div className="w-12 h-12 rounded-xl bg-primary-100 text-primary-700 flex items-center justify-center shrink-0">
+                      <FontAwesomeIcon icon={faBriefcase} className="w-6 h-6" />
+                    </div>
+                    <div className="flex flex-col gap-1 min-w-0">
+                      <h3 className="font-bold text-primary-900 text-lg">{attachment.title}</h3>
+                      <p className="text-slate-700 font-medium text-sm">{attachment.organization}</p>
+                      <div className="flex flex-wrap gap-x-3 gap-y-1 text-xs text-slate-600">
+                        <span>{attachment.email}</span>
+                        <span>·</span>
+                        <span>{attachment.phone}</span>
+                        <span>·</span>
+                        <span>{attachment.location}</span>
+                        <span>·</span>
+                        <span className="text-primary-700 font-medium">{attachment.category}</span>
+                      </div>
+                      <p className="text-sm text-slate-700 mt-1">
+                        Remuneration: <span className="font-semibold text-primary-700">{attachment.renumeration}</span>
+                      </p>
+                    </div>
                   </div>
-                  <p className='text-xs lg:text-lg font-normal'>
-                    renumeration: <span className='text-blue-800 font-semibold'>{attachment.renumeration}</span>
-                  </p>
-                </div>
-                <div className='flex justify-between gap-3'>
-                  <button className="btn border-blue-800 text-blue-800 hover:bg-blue-800 hover:text-slate-200 px-2" onClick={() => handleDetails(attachment)}>Details</button>
-                  <button className="btn bg-blue-800 text-slate-200 hover:bg-blue-950 px-2" onClick={() => handleNavigate(attachment)}>Apply</button>
+                  <div className="flex gap-3 shrink-0">
+                    <button
+                      className="btn-secondary py-2 px-4 text-sm"
+                      onClick={() => handleDetails(attachment)}
+                    >
+                      Details
+                    </button>
+                    <button
+                      className="btn-primary py-2 px-4 text-sm"
+                      onClick={() => handleNavigate(attachment)}
+                    >
+                      Apply
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}
