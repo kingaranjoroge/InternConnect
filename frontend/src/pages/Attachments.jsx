@@ -130,7 +130,7 @@ const Attachments = () => {
                       </p>
                     </div>
                   </div>
-                  <div className="flex gap-3 shrink-0">
+                  <div className="flex gap-3 shrink-0 justify-center md:justify-start">
                     <button
                       className="btn-secondary py-2 px-4 text-sm"
                       onClick={() => handleDetails(attachment)}
